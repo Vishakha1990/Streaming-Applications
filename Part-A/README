@@ -1,0 +1,18 @@
+Usage:
+bin/spark-submit <path to the application> <input-file> <no. of iterations>
+
+Example:
+bin/spark-submit /home/ubuntu/Question1.py /user/ubuntu/input_data/web-BerkStan.txt 10
+
+
+Here we developed a page rank algorithm using python. The implementation is same for Question1 and Question2. 
+Question3 has a different implementation.
+
+Some of the decisions taken were:
+a) There are two ways to partition the RDD. We first analyzed the performance with just using the "repartition()" on links RDD. 
+Next, we varied the "default.parallelism" config parameter. We eventually decided to use both together in our application.
+b) Caches were dropped in all 4 VMs between successive iterations. 
+
+
+
+

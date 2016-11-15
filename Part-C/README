@@ -1,0 +1,31 @@
+Question 1:
+
+To compile:
+cd /home/ubuntu/software/apache-storm-1.0.2/examples/storm-starter
+mvn clean install -DskipTests=true; mvn package -DskipTests=true
+
+TO run:
+cd /home/ubuntu/software/apache-storm-1.0.2/examples/storm-starter
+../../bin/storm jar <path to the java application code> <consumer key> <access token> <access token secret> <accessTokenSecret> <local mode/ remote mode>
+
+Example:
+
+Local mode:
+../../bin/storm jar target/storm-starter-1.0.2.jar org.apache.storm.starter.Question1 6TMjmyDNC5nbuBOjd0eGKI2Q2 VWgfoc8mohF8KVSZn0zvKepkYRS6U7UU5YYdAanntRfGfwW61H 1648050942-VKhm7rP1wrhOsweiz6ckUYVinyYv9tGy6EnnjEE zEKzDLYWsK5Ge4wL8Lnn9sHMcl0LnmC5U6noPau9E4CO8 local
+
+Remote mode:
+../../bin/storm jar target/storm-starter-1.0.2.jar org.apache.storm.starter.Question1 6TMjmyDNC5nbuBOjd0eGKI2Q2 VWgfoc8mohF8KVSZn0zvKepkYRS6U7UU5YYdAanntRfGfwW61H 1648050942-VKhm7rP1wrhOsweiz6ckUYVinyYv9tGy6EnnjEE zEKzDLYWsK5Ge4wL8Lnn9sHMcl0LnmC5U6noPau9E4CO8 remote
+
+
+1) The application topology automatically gets killed after collecting 500,000 tweets in both local and cluster mode. However, the process does not get killed. Need to do Cntrl-C to kill the process.
+
+
+
+Question 2:
+
+Same as above. Just the application code changes. 
+
+1) The application has been hardcoded to run only for 3mins in local mode.
+2) In cluster mode it will run until killed using StormUI.
+3) In our application the output files go to local filesystem (not to HDFS)
+4) In cluster mode this output file can go to any of the VM's.  

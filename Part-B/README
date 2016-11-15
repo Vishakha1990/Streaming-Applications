@@ -1,0 +1,31 @@
+Question-1:
+Usage:
+spark-submit <path to application python file> <HDFS path to the stream dataset>
+Example: spark-submit ~/CS-838-Assignment2-PartB-1.py /user/ubuntu/stream-dataset/
+
+
+a) The the dataset is stored in /user/ubuntu/split-dataset/ in HDFS.
+b) The shell script to move files from /user/ubuntu/split-dataset/ to /user/ubuntu/stream-dataset/ is present in the ~/grader/.
+c) To run the application first run the streaming emulator in a different shell and the run the application using the command line argument stated above. 
+
+
+Question-2:
+
+Usage:
+spark-submit <path to the application python file> <path to the streaming input> <path to output>
+Example: spark-submit ~/CS-838-Assignment2-PartB-2.py /user/ubuntu/stream-dataset /user/ubuntu/PartB-outlog-new
+
+a) The streaming input and the output is read and written to HDFS path specified above.
+
+
+Question-3:
+
+Usage:
+spark-submit <path to the application python file> <path to streaming dataset> <path to user input>
+Example: spark-submit ~/CS-838-Assignment2-PartB-3.py /user/ubuntu/stream-dataset /user/ubuntu/user_id.csv
+
+
+a) In this application the user inputs come from HDFS files shown above and the output comes on to the console. 
+
+
+To start with we observed that only one executor is getting utilized on the cluster. To fix this we changed the spark.locality.wait to 0sec so that it evenly distributes work to all 4 VM hence utilizing the cluster efficiently. 
